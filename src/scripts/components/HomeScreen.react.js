@@ -1,32 +1,57 @@
-import React, { Component } from "react";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
-import Header from "./skeleton/Header.react";
-import List from "./skeleton/List.react";
-import requests from "../requests/requests";
+import React, { Component }                         from "react";
+import { StyleSheet, Text, View, TouchableOpacity, ScrollView } from "react-native";
+import cc                                           from "cryptocompare";
+import Header                                       from "./skeleton/Header.react";
+import List                                         from "./skeleton/List.react";
 
 class HomeScreen extends Component {
-
-    state: {
+    state = {
         listName: "top10",
-        listArray: []
+        listArray: [
+            {
+                name: "BTC",
+                curr: "PLN"
+            },
+            {
+                name: "ETH",
+                curr: "PLN"
+            }
+        ],
+        prices: []
     }
 
-    response() {
-        const l = requests().done();
+    async cryptoPrice(data) {
+        const price = await cc.priceFull(data.name, data.curr);
 
-        console.log(l);
+        console.log(price);
+
+
+        let state = [];
+        state.push({name: data.name, price: price[data.name][data.curr].PRICE});
+
+        this.setState({prices: state});
+
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.data !== this.props.data) {
+
+        }
     }
 
     render() {
-        this.response();
+        this.state.listArray.map((data) => {this.cryptoPrice(data)});
         return (
             <View style={main.container}>
                 <Header/>
-                <View style={main.container}>
+                <ScrollView style={main.container}>
+                {
+                    this.state.prices.map((data, key) => {return( <List key={key} name={data.name} value={data.price}/> )})
+                }
                     <List name={"BTC"} value={30}/>
                     <List name={"BTC"} value={30}/>
                     <List name={"BTC"} value={30}/>
-                </View>
+                </ScrollView>
             </View>
         );
     }
