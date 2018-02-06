@@ -1,0 +1,11 @@
+{
+    "container": {
+        "flex": 1,
+        "backgroundColor": "#fff"
+    },
+
+    "BottomB": {
+        "borderBottomWidth": 1,
+        "borderColor": "rgba(0, 0, 0, 0.1)"
+    }
+}
