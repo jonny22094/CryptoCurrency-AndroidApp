@@ -1,5 +1,17 @@
 {
     "header": {
         "height": 50,
+        "borderColor": "rgba(0, 0, 0, 0.1)"
+    },
+
+    "list": {
+        "flexDirection": "row",
+        "height": 70,
+    },
+
+    "listName": {
+        "flex": 1,
+        "paddingRight": 20,
+        "textAlign": "center"
     }
 }

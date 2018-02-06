@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 class Header extends Component {
     render() {
         return (
-            <View style={[skStyles.header, main.BottomB]}>
+            <View style={[main.bottomB, skStyles.header]}>
                 <Text>ok</Text>
             </View>
         );

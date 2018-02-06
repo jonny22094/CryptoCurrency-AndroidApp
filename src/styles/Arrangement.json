@@ -4,8 +4,28 @@
         "backgroundColor": "#fff"
     },
 
-    "BottomB": {
+    "bottomB": {
         "borderBottomWidth": 1,
-        "borderColor": "rgba(0, 0, 0, 0.1)"
+        "borderColor": "rgba(0, 0, 0, 0.05)"
+    },
+
+    "rightB": {
+        "borderRightWidth": 1,
+        "borderColor": "rgba(0, 0, 0, 0.2)"
+    },
+
+    "center": {
+        "alignItems": "center",
+        "justifyContent": "center"
+    },
+
+    "verticalCenter": {
+        "alignItems": "center"
+    },
+
+    "text": {
+        "fontSize": 20,
+        "padding": 10,
+        "margin": 10
     }
 }
