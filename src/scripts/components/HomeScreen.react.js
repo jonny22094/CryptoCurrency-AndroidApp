@@ -11,14 +11,14 @@ class HomeScreen extends Component {
         listArray: []
     }
 
-    test() {
-        const l = requests.top();
+    response() {
+        const l = requests().done();
 
-        alert(l);
+        console.log(l);
     }
 
     render() {
-        this.test();
+        this.response();
         return (
             <View style={main.container}>
                 <Header/>
