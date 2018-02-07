@@ -3,8 +3,6 @@
         "flexDirection": "row",
         "height": 50,
         "borderColor": "rgba(0, 0, 0, 0.1)",
-
-        "marginLeft": 20,
     },
 
     "list": {

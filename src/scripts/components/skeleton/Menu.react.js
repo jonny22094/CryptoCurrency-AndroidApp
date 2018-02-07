@@ -8,7 +8,14 @@ class Menu extends Component {
 
         return (
             <View style={menuClass}>
-                <TouchableOpacity style={main.bottomB} onPress={() => {this.props.navigation.navigate("NewList"); this.props.toogleMenu}}>
+                {this.props.lists.map((data, key) => { return (
+                    <TouchableOpacity key={key} style={main.bottomB} onPress={() => {this.props.choseList(data); this.props.toogleMenu();}}>
+                        <View style={[main.btn, main.center, {height: 40}]}>
+                            <Text style={main.btnIcon}>{data}</Text>
+                        </View>
+                    </TouchableOpacity>
+                )})}
+                <TouchableOpacity style={main.bottomB} onPress={() => {this.props.navigation.navigate("NewList"); this.props.toogleMenu();}}>
                     <View style={[main.btn, main.center, {height: 40}]}>
                         <Icon type="font-awesome" name="plus-circle" iconStyle={[main.btnIcon, {fontSize: 25}]} containerStyle={main.center}/>
                     </View>

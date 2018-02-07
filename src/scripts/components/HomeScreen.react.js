@@ -11,6 +11,7 @@ class HomeScreen extends Component {
     state = {
         isMenuOpen: false,
         listName: "",
+        lists: [],
         list: []
     }
 
@@ -20,13 +21,30 @@ class HomeScreen extends Component {
         } );
     }
 
-    loadData = () => {
-        storage.load("listName").then(data => {this.setState({listName: data || "Default"})});
-        storage.load(this.state.listName).then(data => {console.log(data)});
+    choseList = name => {
+        storage.save("listName", name);
+        this.setState({listName: name});
+
+        this.loadData();
+    }
+
+    async loadData() {
+        await storage.load("listName").then(data => {this.setState({listName: data || "Default"})});
+        await storage.load("lists").then(data => {this.setState({lists: JSON.parse(data) || [] }); });
+        storage.load(this.state.listName).then(data => {this.setState({list: JSON.parse(data) || [] }); });
+
+        console.log("ok");
     }
 
     componentDidMount() {
-        this.loadData();
+       this.timerID = setInterval(
+         () => this.loadData(),
+         500
+       );
+    }
+
+    componentWillUnmount() {
+       clearInterval(this.timerID);
     }
 
     render() {
@@ -36,7 +54,13 @@ class HomeScreen extends Component {
                 <ScrollView style={main.container}>
                     {this.state.list.map((data, key) => {return( <List key={key} data={data}/> )})}
                 </ScrollView>
-                <Menu isMenuOpen={this.state.isMenuOpen} toogleMenu={this.toogleMenu} navigation={this.props.navigation}/>
+                <Menu
+                    isMenuOpen={this.state.isMenuOpen}
+                    lists={this.state.lists}
+                    choseList={this.choseList}
+                    toogleMenu={this.toogleMenu}
+                    navigation={this.props.navigation}
+                />
             </View>
         );
     }

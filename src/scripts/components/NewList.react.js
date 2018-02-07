@@ -33,7 +33,12 @@ class NewList extends Component {
     }
 
     saveList = () => {
-        storage.save(this.state.list, JSON.stringify(this.state.list));
+        storage.load("lists").then(data => {
+            let lists = JSON.parse(data) || [];
+            lists.push(this.state.title);
+            storage.save("lists", JSON.stringify(lists));
+        });
+        storage.save(this.state.title, JSON.stringify(this.state.list));
         storage.save("listName", this.state.title);
 
         this.props.navigation.goBack();
@@ -61,18 +66,18 @@ class NewList extends Component {
                     <Picker
                         style={skStyles.picker}
                         selectedValue={this.state.crypto}
-                        onValueChange={(itemValue, itemIndex) => this.setState({crypto: itemValue})}>
+                        onValueChange={itemValue => this.setState({crypto: itemValue})}>
                         <Picker.Item label="BTC" value="BTC" />
                         <Picker.Item label="LSK" value="LSK" />
                     </Picker>
                     <Picker
                         style={skStyles.picker}
                         selectedValue={this.state.curren}
-                        onValueChange={(itemValue, itemIndex) => this.setState({curren: itemValue})}>
+                        onValueChange={itemValue => this.setState({curren: itemValue})}>
                         <Picker.Item label="USD" value="USD" />
                         <Picker.Item label="PLN" value="PLN" />
                     </Picker>
-                    <TouchableOpacity style={main.picker} onPress={() => {this.AddCurre()}}>
+                    <TouchableOpacity style={main.picker} onPress={() => this.AddCurre()}>
                         <Text style={[main.text, main.border, {fontSize: 18}]}>ADD</Text>
                     </TouchableOpacity>
                 </View>
@@ -80,8 +85,8 @@ class NewList extends Component {
                     {this.state.list.map((data, key) => { return(
                         <View key={key} style={[skStyles.list, main.bottomB]}>
                             <Text style={skStyles.listName}>{key+1}.</Text>
-                            <Text style={skStyles.listName}>BTC</Text>
-                            <Text style={skStyles.listName}>USD</Text>
+                            <Text style={skStyles.listName}>{data.name}</Text>
+                            <Text style={skStyles.listName}>{data.curr}</Text>
                             <TouchableOpacity style={skStyles.list} onPress={() => {this.deleteItem(key)}}>
                                 <Icon type="font-awesome" name="trash" iconStyle={[main.btnIcon, main.text, {fontSize: 25, marginRight: 20}]}/>
                             </TouchableOpacity>
