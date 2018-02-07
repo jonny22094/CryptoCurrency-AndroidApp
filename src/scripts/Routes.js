@@ -1,6 +1,7 @@
 import { StackNavigator } from 'react-navigation';
 
 import HomeScreen from "./components/HomeScreen.react";
+import NewList from "./components/NewList.react";
 
 const Routes = StackNavigator({
     Home: {
@@ -8,9 +9,18 @@ const Routes = StackNavigator({
         navigationOptions: {
             header: null
         }
+    },
+    NewList: {
+        screen: NewList
     }
+
 }, {
-    initialRouteName: "Home"
+    initialRouteName: "Home",
+    navigationOptions: {
+            headerStyle: {
+                   elevation: 0
+           }
+       }
 });
 
 export default Routes;

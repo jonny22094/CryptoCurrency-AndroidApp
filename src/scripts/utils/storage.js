@@ -1,0 +1,19 @@
+import React, { Component } from 'react';
+import { AsyncStorage } from "react-native";
+
+const storage = {
+    async save(key, value) {
+        try{
+            await AsyncStorage.setItem(key, value);
+        } catch(error) {
+            console.log(error);
+        }
+    },
+
+    async load(key) {
+        const data = await AsyncStorage.getItem(key);
+        return await data;
+    }
+}
+
+export default storage;

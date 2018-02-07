@@ -30,7 +30,7 @@
     "btnIcon": {
         "fontSize": 16,
         "textAlignVertical": "center",
-        "color": "rgba(0, 0, 0, 0.6)"
+        "color": "rgba(0, 0, 0, .7)"
     },
 
     "text": {
