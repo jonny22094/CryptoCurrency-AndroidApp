@@ -5,7 +5,7 @@ class Header extends Component {
     render() {
         return (
             <View style={[main.bottomB, skStyles.header]}>
-                <Text>ok</Text>
+                <View></View>
             </View>
         );
     }
