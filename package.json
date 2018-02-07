@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "android": "node node_modules/react-native/local-cli/cli.js run-android"
+    "android": "node node_modules/react-native/local-cli/cli.js run-android",
+    "build": "cd android && ./gradlew assembleRelease && cd .."
   },
   "dependencies": {
     "cryptocompare": "^0.4.0",
