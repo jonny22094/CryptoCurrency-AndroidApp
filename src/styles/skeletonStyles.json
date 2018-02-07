@@ -15,7 +15,8 @@
     "listName": {
         "flex": 1,
         "paddingRight": 20,
-        "textAlign": "center"
+        "textAlign": "center",
+        "textAlignVertical": "center",
     },
 
     "menu": {
@@ -23,10 +24,16 @@
         "backgroundColor": "#fff",
         "width": 150,
         "top": 49,
-
-        "borderWidth": 1,
-        "borderBottomWidth": 1,
-        "borderColor": "rgba(0, 0, 0, 0.1)"
     },
 
+    "input": {
+        "margin": 70,
+        "marginTop": 30,
+        "marginBottom": 10,
+    },
+
+    "picker": {
+        "width": 80,
+        "margin": 10
+    }
 }

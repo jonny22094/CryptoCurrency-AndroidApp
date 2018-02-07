@@ -4,6 +4,16 @@
         "backgroundColor": "#fff"
     },
 
+    "border": {
+        "borderWidth": 1,
+        "borderColor": "rgba(0, 0, 0, 0.1)"
+    },
+
+    "topB": {
+        "borderTopWidth": 1,
+        "borderColor": "rgba(0, 0, 0, 0.4)"
+    },
+
     "bottomB": {
         "borderBottomWidth": 1,
         "borderColor": "rgba(0, 0, 0, 0.05)"

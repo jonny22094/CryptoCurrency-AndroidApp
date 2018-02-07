@@ -4,12 +4,12 @@ import { Icon }                                     from "react-native-elements"
 
 class Menu extends Component {
     render() {
-        const menuClass = this.props.isMenuOpen ? [skStyles.menu] : [skStyles.menu, {display: "none"}];
+        const menuClass = this.props.isMenuOpen ? [main.border, skStyles.menu] : [main.border, skStyles.menu, {display: "none"}];
 
         return (
             <View style={menuClass}>
-                <TouchableOpacity style={main.bottomB} onPress={() => {this.props.navigation.navigate("NewList")}}>
-                    <View style={[main.btn, main.center]}>
+                <TouchableOpacity style={main.bottomB} onPress={() => {this.props.navigation.navigate("NewList"); this.props.toogleMenu}}>
+                    <View style={[main.btn, main.center, {height: 40}]}>
                         <Icon type="font-awesome" name="plus-circle" iconStyle={[main.btnIcon, {fontSize: 25}]} containerStyle={main.center}/>
                     </View>
                 </TouchableOpacity>

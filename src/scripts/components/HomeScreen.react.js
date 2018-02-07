@@ -10,34 +10,23 @@ import storage                                      from "../utils/storage";
 class HomeScreen extends Component {
     state = {
         isMenuOpen: false,
-        listName: "TOP 10",
-        list: [
-            {
-                name: "LSK",
-                curr: "PLN"
-            },
-            {
-                name: "BTC",
-                curr: "EUR"
-            },
-            {
-                name: "ETH",
-                curr: "PLN"
-            }
-        ]
+        listName: "",
+        list: []
     }
 
     toogleMenu = () => {
         this.setState( {
             isMenuOpen : !this.state.isMenuOpen
         } );
+    }
 
-        storage.save("listName", "TOP 10");
+    loadData = () => {
+        storage.load("listName").then(data => {this.setState({listName: data || "Default"})});
+        storage.load(this.state.listName).then(data => {console.log(data)});
     }
 
     componentDidMount() {
-        storage.load("listName").then(data => {this.setState({listName: data || "TOP 10"})});
-        storage.load("list").then(data => {this.setState({list: data || []})});
+        this.loadData();
     }
 
     render() {
@@ -47,7 +36,7 @@ class HomeScreen extends Component {
                 <ScrollView style={main.container}>
                     {this.state.list.map((data, key) => {return( <List key={key} data={data}/> )})}
                 </ScrollView>
-                <Menu isMenuOpen={this.state.isMenuOpen} navigation={this.props.navigation}/>
+                <Menu isMenuOpen={this.state.isMenuOpen} toogleMenu={this.toogleMenu} navigation={this.props.navigation}/>
             </View>
         );
     }
