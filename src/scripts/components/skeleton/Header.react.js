@@ -7,7 +7,7 @@ class Header extends Component {
     render() {
         return (
             <View style={[main.bottomB, main.verticalCenter, skStyles.header]}>
-                <TouchableOpacity style={[main.btn, {marginLeft: 20, height: 55}]} onPress={() => {this.props.toogleMenu()}}>
+                <TouchableOpacity style={[main.btn, {marginLeft: 20, height: 55}]} onPress={() => this.props.toogleMenu()}>
                     <Icon type="material-icons" name="arrow-drop-down" iconStyle={main.btnIcon} containerStyle={main.center}/>
                     <Text style={main.btnIcon}>{this.props.listName}</Text>
                 </TouchableOpacity>

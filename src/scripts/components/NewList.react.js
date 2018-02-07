@@ -96,7 +96,7 @@ class NewList extends Component {
                                 <Icon type="font-awesome" name="trash" iconStyle={[main.btnIcon, main.text, {fontSize: 25, marginRight: 20}]}/>
                             </TouchableOpacity>
                         </View>
-                    );})}
+                    )})}
                 </ScrollView>
             </View>
         );
