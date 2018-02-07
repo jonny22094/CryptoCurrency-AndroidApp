@@ -7,10 +7,11 @@
     "android": "node node_modules/react-native/local-cli/cli.js run-android"
   },
   "dependencies": {
+    "cryptocompare": "^0.4.0",
     "react": "^16.2.0",
     "react-native": "^0.53.0",
-    "react-navigation": "^1.0.0-beta.27",
-    "cryptocompare": "^0.4.0"
+    "react-native-vector-icons": "^4.5.0",
+    "react-navigation": "^1.0.0-beta.27"
   },
   "devDependencies": {
     "babel-jest": "^22.1.0",
