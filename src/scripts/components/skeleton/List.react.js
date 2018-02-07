@@ -37,7 +37,7 @@ class List extends Component {
                 <Text style={[main.text, main.rightB, skStyles.listName]}>{this.props.data.name}</Text>
                 <Text style={[main.text, {flex: 6}]}>
                     {this.state.price}
-                    <Text style={{fontSize: 12}}>{this.state.name}</Text>
+                    <Text style={{fontSize: 12}}>  {this.state.name}</Text>
                 </Text>
             </View>
         );

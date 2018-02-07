@@ -68,13 +68,18 @@ class NewList extends Component {
                         selectedValue={this.state.crypto}
                         onValueChange={itemValue => this.setState({crypto: itemValue})}>
                         <Picker.Item label="BTC" value="BTC" />
+                        <Picker.Item label="ETH" value="ETH" />
                         <Picker.Item label="LSK" value="LSK" />
+                        <Picker.Item label="LTC" value="LTC" />
+                        <Picker.Item label="BCC" value="BCC" />
+                        <Picker.Item label="BTG" value="BTG" />
                     </Picker>
                     <Picker
                         style={skStyles.picker}
                         selectedValue={this.state.curren}
                         onValueChange={itemValue => this.setState({curren: itemValue})}>
                         <Picker.Item label="USD" value="USD" />
+                        <Picker.Item label="EUR" value="EUR" />
                         <Picker.Item label="PLN" value="PLN" />
                     </Picker>
                     <TouchableOpacity style={main.picker} onPress={() => this.AddCurre()}>

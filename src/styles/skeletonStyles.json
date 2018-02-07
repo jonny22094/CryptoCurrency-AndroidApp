@@ -1,7 +1,7 @@
 {
     "header": {
         "flexDirection": "row",
-        "height": 50,
+        "height": 55,
         "borderColor": "rgba(0, 0, 0, 0.1)",
     },
 
@@ -31,7 +31,7 @@
     },
 
     "picker": {
-        "width": 80,
+        "width": 110,
         "margin": 10
     }
 }
