@@ -1,7 +1,10 @@
 {
     "header": {
+        "flexDirection": "row",
         "height": 50,
-        "borderColor": "rgba(0, 0, 0, 0.1)"
+        "borderColor": "rgba(0, 0, 0, 0.1)",
+
+        "marginLeft": 20,
     },
 
     "list": {
@@ -13,5 +16,17 @@
         "flex": 1,
         "paddingRight": 20,
         "textAlign": "center"
-    }
+    },
+
+    "menu": {
+        "position": "absolute",
+        "backgroundColor": "#fff",
+        "width": 150,
+        "top": 49,
+
+        "borderWidth": 1,
+        "borderBottomWidth": 1,
+        "borderColor": "rgba(0, 0, 0, 0.1)"
+    },
+
 }

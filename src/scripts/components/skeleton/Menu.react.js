@@ -2,14 +2,16 @@ import React, { Component }                         from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { Icon }                                     from "react-native-elements";
 
-class Header extends Component {
-
+class Menu extends Component {
     render() {
+        const menuClass = this.props.isMenuOpen ? [skStyles.menu] : [skStyles.menu, {display: "none"}];
+
         return (
-            <View style={[main.bottomB, main.verticalCenter, skStyles.header]}>
-                <TouchableOpacity style={main.btn} onPress={() => {this.props.toogleMenu()}}>
-                    <Icon type="material-icons" name="arrow-drop-down" iconStyle={main.btnIcon} containerStyle={main.center}/>
-                    <Text style={main.btnIcon}>{this.props.listName}</Text>
+            <View style={menuClass}>
+                <TouchableOpacity style={main.bottomB}>
+                    <View style={[main.btn, main.center]}>
+                        <Icon type="font-awesome" name="plus-circle" iconStyle={[main.btnIcon, {fontSize: 25}]} containerStyle={main.center}/>
+                    </View>
                 </TouchableOpacity>
             </View>
         );
@@ -19,4 +21,4 @@ class Header extends Component {
 const main = StyleSheet.create(require("../../../styles/Arrangement"));
 const skStyles = StyleSheet.create(require("../../../styles/skeletonStyles"));
 
-export default Header;
+export default Menu;

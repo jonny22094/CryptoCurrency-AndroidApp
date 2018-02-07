@@ -23,6 +23,16 @@
         "alignItems": "center"
     },
 
+    "btn": {
+        "flexDirection": "row",
+    },
+
+    "btnIcon": {
+        "fontSize": 16,
+        "textAlignVertical": "center",
+        "color": "rgba(0, 0, 0, 0.6)"
+    },
+
     "text": {
         "fontSize": 20,
         "padding": 10,

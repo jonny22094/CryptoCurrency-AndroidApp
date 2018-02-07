@@ -27,6 +27,10 @@ class List extends Component {
        );
     }
 
+    componentWillUnmount() {
+       clearInterval(this.timerID);
+    }
+
     render() {
         return (
             <View style={[skStyles.list, main.verticalCenter, main.bottomB]}>
