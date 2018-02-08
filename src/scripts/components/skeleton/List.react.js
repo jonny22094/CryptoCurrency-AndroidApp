@@ -1,6 +1,8 @@
 import React, { Component }                         from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import cc                                           from "cryptocompare";
+import SvgUri from "react-native-svg-uri";
+import images from "../../utils/images.js"
 
 class List extends Component {
 
@@ -23,7 +25,7 @@ class List extends Component {
     componentDidMount() {
        this.timerID = setInterval(
          () => this.cryptoPrice(),
-         500
+         1000
        );
     }
 
@@ -34,7 +36,15 @@ class List extends Component {
     render() {
         return (
             <View style={[skStyles.list, main.verticalCenter, main.bottomB]}>
-                <Text style={[main.text, main.rightB, skStyles.listName]}>{this.props.data.name}</Text>
+                <View style={[main.rightB, main.center, {paddingLeft: 20, paddingRight: 20, flex: 1}]}>
+                    <SvgUri
+                        width="25"
+                        height="25"
+                        fill="rgba(0, 0, 0, 0.6)"
+                        source={images[this.props.data.name]}
+                    />
+                    <Text>{this.props.data.name}</Text>
+                </View>
                 <Text style={[main.text, {flex: 6}]}>
                     {this.state.price}
                     <Text style={{fontSize: 12}}>  {this.state.name}</Text>

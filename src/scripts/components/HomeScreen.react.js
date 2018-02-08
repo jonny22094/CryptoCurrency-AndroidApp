@@ -6,7 +6,6 @@ import List                                         from "./skeleton/List.react"
 import Menu                                         from "./skeleton/Menu.react";
 import storage                                      from "../utils/storage";
 
-
 class HomeScreen extends Component {
     state = {
         isMenuOpen: false,
@@ -27,9 +26,9 @@ class HomeScreen extends Component {
     }
 
     async loadData() {
-        await storage.load("listName").then(data => this.setState({listName: data || "Default"}));
-        await storage.load("lists").then(data => this.setState({lists: JSON.parse(data) || []}));
-        storage.load(this.state.listName).then(data => this.setState({list: JSON.parse(data) || []}));
+        await storage.load("listName").then(data => {this.setState({listName: data || "Default"})});
+        await storage.load("lists").then(data => {this.setState({lists: JSON.parse(data) || []})});
+        await storage.load(this.state.listName).then(data => {this.setState({list: JSON.parse(data) || []})});
     }
 
     componentDidMount() {
@@ -48,7 +47,7 @@ class HomeScreen extends Component {
             <View style={main.container}>
                 <Header listName={this.state.listName} toogleMenu={this.toogleMenu}/>
                 <ScrollView style={main.container}>
-                    {this.state.list.map((data, key) => { return( <List key={key} data={data}/> )})}
+                    {this.state.list.map((data, key) => <List key={key} data={data}/>)}
                 </ScrollView>
                 <Menu
                     isMenuOpen={this.state.isMenuOpen}

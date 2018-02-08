@@ -2,6 +2,7 @@ import React, { Component }                         from "react";
 import { StyleSheet, Text, View, TouchableOpacity, TextInput, Picker, ScrollView } from "react-native";
 import { Icon }                                     from "react-native-elements";
 import storage                                      from "../utils/storage";
+import cryptoCurrency                               from "../utils/cryptocurrency.js"
 
 class NewList extends Component {
     state = {
@@ -44,6 +45,9 @@ class NewList extends Component {
         this.props.navigation.goBack();
     }
 
+    componentDidMount() {
+    }
+
     render() {
         return (
             <View style={main.container}>
@@ -59,20 +63,15 @@ class NewList extends Component {
                     style={skStyles.input}
                     textAlign={'center'}
                     placeholder="Name"
-                    onChangeText={text => this.setState({title: text})}
+                    onChangeText={text => {this.setState({title: text})}}
                     value={this.state.title}
                 />
                 <View style={[main.btn, main.center]}>
                     <Picker
                         style={skStyles.picker}
                         selectedValue={this.state.crypto}
-                        onValueChange={itemValue => this.setState({crypto: itemValue})}>
-                        <Picker.Item label="BTC" value="BTC" />
-                        <Picker.Item label="ETH" value="ETH" />
-                        <Picker.Item label="LSK" value="LSK" />
-                        <Picker.Item label="LTC" value="LTC" />
-                        <Picker.Item label="BCC" value="BCC" />
-                        <Picker.Item label="BTG" value="BTG" />
+                        onValueChange={itemValue => {this.setState({crypto: itemValue})}}>
+                        {cryptoCurrency.map((data, key) => <Picker.Item key={key} label={data} value={data} />)}
                     </Picker>
                     <Picker
                         style={skStyles.picker}
