@@ -1,7 +1,6 @@
 import React, { Component }                         from "react";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 import cc                                           from "cryptocompare";
-import SvgUri from "react-native-svg-uri";
 import images from "../../utils/images.js"
 
 class List extends Component {
@@ -37,12 +36,8 @@ class List extends Component {
         return (
             <View style={[skStyles.list, main.verticalCenter, main.bottomB]}>
                 <View style={[main.rightB, main.center, {paddingLeft: 20, paddingRight: 20, flex: 1}]}>
-                    <SvgUri
-                        width="25"
-                        height="25"
-                        fill="rgba(0, 0, 0, 0.6)"
-                        source={images[this.props.data.name]}
-                    />
+
+                    <Image source={images[this.props.data.name]} style={{width: 25, height:25}} />
                     <Text>{this.props.data.name}</Text>
                 </View>
                 <Text style={[main.text, {flex: 6}]}>
