@@ -13,6 +13,10 @@ const storage = {
     async load(key) {
         const data = await AsyncStorage.getItem(key);
         return await data;
+    },
+
+    async remove(key) {
+        await AsyncStorage.removeItem(key);
     }
 }
 

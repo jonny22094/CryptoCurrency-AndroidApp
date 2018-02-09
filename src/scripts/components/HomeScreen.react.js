@@ -1,5 +1,5 @@
 import React, { Component }                         from "react";
-import { StyleSheet, Text, View, TouchableOpacity, ScrollView, AsyncStorage } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, ScrollView } from "react-native";
 import { Icon }                                     from "react-native-elements";
 import Header                                       from "./skeleton/Header.react";
 import List                                         from "./skeleton/List.react";
