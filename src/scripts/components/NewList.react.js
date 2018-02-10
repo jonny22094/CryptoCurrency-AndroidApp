@@ -51,12 +51,12 @@ class NewList extends Component {
     render() {
         return (
             <View style={main.container}>
-                <View style={[main.btn, {justifyContent: "space-between"}]}>
+                <View style={[main.rowContainer, {justifyContent: "space-between"}]}>
                     <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
-                        <Icon type="feather" name="arrow-left" iconStyle={[main.btnIcon, main.text, {fontSize: 25, marginRight: 20}]}/>
+                        <Icon type="feather" name="arrow-left" iconStyle={[main.text, main.btn, main.btnText]}/>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => this.saveList()}>
-                        <Icon type="font-awesome" name="save" iconStyle={[main.btnIcon, main.text, {fontSize: 25, marginRight: 20}]}/>
+                        <Icon type="font-awesome" name="save" iconStyle={[main.text, main.btn, main.btnText]}/>
                     </TouchableOpacity>
                 </View>
                 <TextInput
@@ -66,7 +66,7 @@ class NewList extends Component {
                     onChangeText={text => {this.setState({title: text})}}
                     value={this.state.title}
                 />
-                <View style={[main.btn, main.center]}>
+                <View style={[main.rowContainer, main.center]}>
                     <Picker
                         style={skStyles.picker}
                         selectedValue={this.state.crypto}
@@ -82,7 +82,7 @@ class NewList extends Component {
                         <Picker.Item label="PLN" value="PLN" />
                     </Picker>
                     <TouchableOpacity style={main.picker} onPress={() => this.AddCurre()}>
-                        <Text style={[main.text, main.border, {fontSize: 18}]}>ADD</Text>
+                        <Text style={[main.text, main.btnIcon, main.border, {borderRadius: 3}]}>ADD</Text>
                     </TouchableOpacity>
                 </View>
                 <ScrollView style={[main.contianer, main.topB, {marginTop: 20}]}>
@@ -92,7 +92,7 @@ class NewList extends Component {
                             <Text style={skStyles.listName}>{data.name}</Text>
                             <Text style={skStyles.listName}>{data.curr}</Text>
                             <TouchableOpacity style={skStyles.list} onPress={() => {this.deleteItem(key)}}>
-                                <Icon type="font-awesome" name="trash" iconStyle={[main.btnIcon, main.text, {fontSize: 25, marginRight: 20}]}/>
+                                <Icon type="font-awesome" name="trash" iconStyle={[main.btnIcon, main.btn, main.text ,main.btnText]}/>
                             </TouchableOpacity>
                         </View>
                     )})}
