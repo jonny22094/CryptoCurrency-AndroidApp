@@ -45,12 +45,18 @@ class HomeScreen extends Component {
     render() {
         return (
             <View style={main.container}>
-                <Header listName={this.state.listName} toogleMenu={this.toogleMenu}/>
+                <Header
+                    listName={this.state.listName}
+                    loadData={this.loadData}
+                    toogleMenu={this.toogleMenu}
+                    navigation={this.props.navigation}
+                />
                 <ScrollView style={main.container}>
                     {this.state.list.map((data, key) => <List key={key} data={data}/>)}
                 </ScrollView>
                 <Menu
                     isMenuOpen={this.state.isMenuOpen}
+                    loadData={this.loadData}
                     lists={this.state.lists}
                     choseList={this.choseList}
                     toogleMenu={this.toogleMenu}

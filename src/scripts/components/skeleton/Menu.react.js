@@ -15,7 +15,9 @@ class Menu extends Component {
                         </View>
                     </TouchableOpacity>
                 )})}
-                <TouchableOpacity style={main.bottomB} onPress={() => {this.props.navigation.navigate("NewList"); this.props.toogleMenu();}}>
+                <TouchableOpacity style={main.bottomB} onPress={() => {
+                    this.props.navigation.navigate("NewList", {listName: ""}); this.props.toogleMenu()}
+                }>
                     <View style={[main.btn, main.center, {height: 40}]}>
                         <Icon type="entypo" name="plus" iconStyle={[main.btnIcon, main.btnText]} containerStyle={main.center}/>
                     </View>

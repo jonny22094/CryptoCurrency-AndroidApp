@@ -6,6 +6,7 @@ import cryptoCurrency                               from "../utils/cryptocurrenc
 
 class NewList extends Component {
     state = {
+        perviousName: "",
         title: "",
         crypto: "BTC",
         curren: "USD",
@@ -34,25 +35,51 @@ class NewList extends Component {
     }
 
     saveList = () => {
-        storage.load("lists").then(data => {
-            let lists = JSON.parse(data) || [];
-            lists.push(this.state.title);
-            storage.save("lists", JSON.stringify(lists));
-        });
-        storage.save(this.state.title, JSON.stringify(this.state.list));
-        storage.save("listName", this.state.title);
+        if(this.state.title !== "" ) {
+            if(this.state.perviousName !== this.state.title) {
+                storage.load("lists").then(data => {
+                    let lists = JSON.parse(data);
+                    const index = lists.indexOf(this.state.perviousName);
+                    //błąd zapisu przemyśleć
+                    if (index > -1) lists.splice(index, 1);
 
-        this.props.navigation.goBack();
+                    storage.save("lists", JSON.stringify(lists));
+                    storage.remove(this.state.perviousName);
+                });
+                
+                storage.load("lists").then(data => {
+                    let lists = JSON.parse(data) || [];
+                    lists.push(this.state.title);
+                    storage.save("lists", JSON.stringify(lists));
+                });
+            }
+
+
+            storage.save(this.state.title, JSON.stringify(this.state.list));
+            storage.save("listName", this.state.title);
+
+            this.props.navigation.goBack();
+        }
+        else alert("Enter the list name");
     }
 
     componentDidMount() {
+        if(this.props.navigation.state.params.listName) {
+            storage.load(this.props.navigation.state.params.listName).then(data => {
+                this.setState({
+                    perviousName: this.props.navigation.state.params.listName,
+                    title: this.props.navigation.state.params.listName,
+                    list: JSON.parse(data) || []
+                })
+            })
+        }
     }
 
     render() {
         return (
             <View style={main.container}>
                 <View style={[main.rowContainer, {justifyContent: "space-between"}]}>
-                    <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
+                    <TouchableOpacity onPress={() => {this.props.navigation.goBack()}}>
                         <Icon type="feather" name="arrow-left" iconStyle={[main.text, main.btn, main.btnText]}/>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => this.saveList()}>

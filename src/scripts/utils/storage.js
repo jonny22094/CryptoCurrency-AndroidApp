@@ -17,6 +17,7 @@ const storage = {
 
     async remove(key) {
         await AsyncStorage.removeItem(key);
+        console.log("ok");
     }
 }
 
