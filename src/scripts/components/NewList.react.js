@@ -39,18 +39,16 @@ class NewList extends Component {
             if(this.state.perviousName !== this.state.title) {
                 storage.load("lists").then(data => {
                     let lists = JSON.parse(data);
+
                     const index = lists.indexOf(this.state.perviousName);
-                    //błąd zapisu przemyśleć
-                    if (index > -1) lists.splice(index, 1);
+                    if(index > -1) lists.splice(index, 1);
+
+                    lists.push(this.state.title);
+
+                    console.log(lists);
 
                     storage.save("lists", JSON.stringify(lists));
                     storage.remove(this.state.perviousName);
-                });
-                
-                storage.load("lists").then(data => {
-                    let lists = JSON.parse(data) || [];
-                    lists.push(this.state.title);
-                    storage.save("lists", JSON.stringify(lists));
                 });
             }
 

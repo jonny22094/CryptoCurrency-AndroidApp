@@ -5,6 +5,7 @@ const storage = {
     async save(key, value) {
         try{
             await AsyncStorage.setItem(key, value);
+            console.log(value);
         } catch(error) {
             console.log(error);
         }
@@ -17,7 +18,6 @@ const storage = {
 
     async remove(key) {
         await AsyncStorage.removeItem(key);
-        console.log("ok");
     }
 }
 
