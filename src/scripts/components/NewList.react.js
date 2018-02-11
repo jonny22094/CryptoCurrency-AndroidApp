@@ -34,22 +34,30 @@ class NewList extends Component {
         });
     }
 
+    deleteList = (name, bool) => {
+        storage.load("lists").then(data => {
+            let lists = JSON.parse(data);
+
+            const index = lists.indexOf(name);
+            if(index > -1) lists.splice(index, 1);
+
+            if(bool) lists.push(this.state.title);
+            else     storage.save("listName", lists[0] || "Default");
+
+            storage.save("lists", JSON.stringify(lists));
+            storage.remove(name);
+        });
+
+        if(!bool) {
+            storage.save("listName", this.state.title);
+            this.props.navigation.goBack();
+        }
+    }
+
     saveList = () => {
         if(this.state.title !== "" ) {
             if(this.state.perviousName !== this.state.title) {
-                storage.load("lists").then(data => {
-                    let lists = JSON.parse(data);
-
-                    const index = lists.indexOf(this.state.perviousName);
-                    if(index > -1) lists.splice(index, 1);
-
-                    lists.push(this.state.title);
-
-                    console.log(lists);
-
-                    storage.save("lists", JSON.stringify(lists));
-                    storage.remove(this.state.perviousName);
-                });
+                this.deleteList(this.state.perviousName, true)
             }
 
 
@@ -80,9 +88,14 @@ class NewList extends Component {
                     <TouchableOpacity onPress={() => {this.props.navigation.goBack()}}>
                         <Icon type="feather" name="arrow-left" iconStyle={[main.text, main.btn, main.btnText]}/>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => this.saveList()}>
-                        <Icon type="font-awesome" name="save" iconStyle={[main.text, main.btn, main.btnText]}/>
-                    </TouchableOpacity>
+                    <View style={main.rowContainer}>
+                        <TouchableOpacity onPress={() => this.deleteList(this.state.title, false)}>
+                            <Icon type="font-awesome" name="trash" iconStyle={[main.text, main.btn, main.btnText]}/>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => this.saveList()}>
+                            <Icon type="font-awesome" name="save" iconStyle={[main.text, main.btn, main.btnText]}/>
+                        </TouchableOpacity>
+                    </View>
                 </View>
                 <TextInput
                     style={skStyles.input}

@@ -11,13 +11,11 @@ class Header extends Component {
                     <Text style={main.btnIcon}>{this.props.listName}</Text>
                 </TouchableOpacity>
                 <View style={main.rowContainer}>
-                    <TouchableOpacity style={[main.rowContainer, main.btn]}
-                        onPress={() => this.props.navigation.navigate("NewList", {listName: this.props.listName})
-                    }>
+                    <TouchableOpacity
+                        style={[main.rowContainer, main.btn]}
+                        onPress={() => this.props.navigation.navigate("NewList", {listName: this.props.listName})}
+                    >
                         <Icon type="material-icons" name="edit" iconStyle={[main.btnIcon, main.btnText]} containerStyle={main.center}/>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={[main.rowContainer, main.btn]} onPress={() => this.props.navigation.navigate("Settings")}>
-                        <Icon type="material-icons" name="settings" iconStyle={[main.btnIcon, main.btnText]} containerStyle={main.center}/>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -29,3 +27,7 @@ const main = StyleSheet.create(require("../../../styles/Arrangement"));
 const skStyles = StyleSheet.create(require("../../../styles/skeletonStyles"));
 
 export default Header;
+
+// <TouchableOpacity style={[main.rowContainer, main.btn]} onPress={() => this.props.navigation.navigate("Settings")}>
+//     <Icon type="material-icons" name="settings" iconStyle={[main.btnIcon, main.btnText]} containerStyle={main.center}/>
+// </TouchableOpacity>

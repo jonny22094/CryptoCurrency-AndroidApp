@@ -36,7 +36,7 @@ class List extends Component {
         return (
             <View style={[skStyles.list, main.verticalCenter, main.bottomB]}>
                 <View style={[main.rightB, main.center, {paddingLeft: 20, paddingRight: 20, flex: 1}]}>
-                    <Image source={images[this.props.data.name]} style={{width: 25, height: 25}} />
+                    <Image source={images[this.props.data.name]} style={{width: 25, height: 25, opacity: .7}} />
                     <Text>{this.props.data.name}</Text>
                 </View>
                 <Text style={[main.text, {flex: 6}]}>
