@@ -54,6 +54,12 @@
         "color": "rgba(0, 0, 0, .5)"
     },
 
+    "image": {
+        "width": 25,
+        "height": 25,
+        "opacity": 0.7
+    },
+
     "text": {
         "fontSize": 20,
         "padding": 10,
