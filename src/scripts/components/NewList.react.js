@@ -118,6 +118,7 @@ class NewList extends Component {
                         <Picker.Item label="USD" value="USD" />
                         <Picker.Item label="EUR" value="EUR" />
                         <Picker.Item label="PLN" value="PLN" />
+                        <Picker.Item label="BTC" value="BTC" />
                     </Picker>
                     <TouchableOpacity style={main.picker} onPress={() => this.AddCurre()}>
                         <Text style={[main.text, main.btnIcon, main.border, {borderRadius: 3}]}>ADD</Text>

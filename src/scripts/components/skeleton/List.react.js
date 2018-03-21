@@ -10,20 +10,24 @@ class List extends Component {
         name:  "",
         isOpen: false,
         price: "Loading...",
-        change24hour: "",
+        change24hour: 0,
         low24hour: 0,
-        high24hour: 0
+        high24hour: 0,
+        color: ""
     }
 
     async cryptoPrice() {
         const data = await cc.priceFull(this.props.data.name, this.props.data.curr);
+
+        console.log(data);
 
         this.setState({
             name: data[this.props.data.name][this.props.data.curr].TOSYMBOL,
             price: data[this.props.data.name][this.props.data.curr].PRICE,
             low24hour: data[this.props.data.name][this.props.data.curr].LOW24HOUR,
             high24hour: data[this.props.data.name][this.props.data.curr].HIGH24HOUR,
-            change24hour: data[this.props.data.name][this.props.data.curr].CHANGEPCT24HOUR.toFixed(2)
+            change24hour: data[this.props.data.name][this.props.data.curr].CHANGEPCT24HOUR.toFixed(2),
+            color: data[this.props.data.name][this.props.data.curr].CHANGEPCT24HOUR.toFixed(2) > 0 ? {color: "#299C2A"} : {color: "#DE4E4D"}
         });
     }
 
@@ -55,7 +59,7 @@ class List extends Component {
                         <Text style={{fontSize: 12}}>  {this.state.name}</Text>
                     </Text>
                     <View style={[main.container, main.center, {flex: 2, flexDirection: "column"}]}>
-                        <Text>{this.state.change24hour}%</Text>
+                        <Text style={this.state.color}>{this.state.change24hour}%</Text>
                     </View>
                 </TouchableOpacity>
                 <View style={[skStyles.listInfo, main.rowContainer, main.verticalCenter, main.bottomB, listInfo]}>
