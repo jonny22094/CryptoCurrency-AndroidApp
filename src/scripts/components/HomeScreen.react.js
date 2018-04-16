@@ -25,18 +25,20 @@ class HomeScreen extends Component {
     this.loadData();
   }
 
-  cryptoPrice(data) {
-    let list = [];
-    data.map(async data => {
-      list.push(await cc.priceFull(data.name, data.curr));
-    });
-    console.log(list);
-  }
-
   async loadData() {
     await storage.load("listName").then(data => {this.setState({listName: data || "Default"})});
     await storage.load("lists").then(data => {this.setState({lists: JSON.parse(data) || []})});
-    await storage.load(this.state.listName).then(data => {this.cryptoPrice(data)});
+    await storage.load(this.state.listName).then(async data => {
+      let list = [];
+      data = JSON.parse(data);
+      
+      for(const i in data) {
+        const a = await cc.priceFull(data[i].name, data[i].curr);
+        list.push(a[data[i].name][data[i].curr]);
+      }
+
+      this.setState({list: list});
+    });
   }
 
   componentDidMount() {
