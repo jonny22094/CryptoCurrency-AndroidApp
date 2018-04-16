@@ -31,7 +31,7 @@ class HomeScreen extends Component {
     await storage.load(this.state.listName).then(async data => {
       let list = [];
       data = JSON.parse(data);
-      
+
       for(const i in data) {
         const a = await cc.priceFull(data[i].name, data[i].curr);
         list.push(a[data[i].name][data[i].curr]);

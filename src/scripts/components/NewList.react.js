@@ -78,14 +78,15 @@ class NewList extends Component {
   }
 
   render() {
+    const theme = this.props.navigation.state.params.theme;
     return (
-      <View style={main.container}>
+      <View style={[theme.container, main.container]}>
         <View style={[main.rowContainer, {justifyContent: "space-between"}]}>
           <TouchableOpacity onPress={() => {this.props.navigation.goBack()}}>
             <Icon
               type="feather"
               name="arrow-left"
-              iconStyle={[main.text, main.btn, main.btnText]}
+              iconStyle={[theme.text, main.text, main.btn, main.btnText]}
             />
           </TouchableOpacity>
           <View style={main.rowContainer}>
@@ -93,34 +94,34 @@ class NewList extends Component {
               <Icon
                 type="font-awesome"
                 name="trash"
-                iconStyle={[main.text, main.btn, main.btnText]}
+                iconStyle={[theme.text, main.text, main.btn, main.btnText]}
               />
             </TouchableOpacity>
             <TouchableOpacity onPress={() => this.saveList()}>
               <Icon
                 type="font-awesome"
                 name="save"
-                iconStyle={[main.text, main.btn, main.btnText]}
+                iconStyle={[theme.text, main.text, main.btn, main.btnText]}
               />
             </TouchableOpacity>
           </View>
         </View>
         <TextInput
-          style={skeleton.input}
+          style={[theme.text, skeleton.input]}
           textAlign={'center'}
-          placeholder="Name"
+          placeholder="List name"
           onChangeText={text => {this.setState({title: text})}}
           value={this.state.title}
         />
         <View style={[main.rowContainer, main.center]}>
           <Picker
-            style={skeleton.picker}
+            style={[theme.text, skeleton.picker]}
             selectedValue={this.state.crypto}
             onValueChange={itemValue => {this.setState({crypto: itemValue})}}>
             {cryptoCurrency.map((data, key) => <Picker.Item key={key} label={data} value={data} />)}
           </Picker>
           <Picker
-            style={skeleton.picker}
+            style={[theme.text, skeleton.picker]}
             selectedValue={this.state.curren}
             onValueChange={itemValue => this.setState({curren: itemValue})}>
             <Picker.Item label="USD" value="USD" />
@@ -128,25 +129,27 @@ class NewList extends Component {
             <Picker.Item label="PLN" value="PLN" />
             <Picker.Item label="BTC" value="BTC" />
           </Picker>
-          <TouchableOpacity style={main.picker} onPress={() => this.AddCurre()}>
-            <Text style={[main.text, main.btnIcon, main.border, {borderRadius: 3}]}>ADD</Text>
+          <TouchableOpacity onPress={() => this.AddCurre()}>
+            <Text style={[theme.text, theme.border, main.border, main.text, main.btnIcon, {borderRadius: 3}]}>
+              ADD
+            </Text>
           </TouchableOpacity>
         </View>
-        <ScrollView style={[main.contianer, main.topB, {marginTop: 20}]}>
-          {this.state.list.map((data, key) => { return(
-            <View key={key} style={[skeleton.list, main.bottomB]}>
-              <Text style={skeleton.listName}>{key+1}.</Text>
-              <Text style={skeleton.listName}>{data.name}</Text>
-              <Text style={skeleton.listName}>{data.curr}</Text>
+        <ScrollView style={[theme.border, main.contianer, main.topB, {marginTop: 20}]}>
+          {this.state.list.map((data, key) =>
+            <View key={key} style={[theme.border, main.bottomB, skeleton.list]}>
+              <Text style={[theme.text, skeleton.listName]}>{key+1}.</Text>
+              <Text style={[theme.text, skeleton.listName]}>{data.name}</Text>
+              <Text style={[theme.text, skeleton.listName]}>{data.curr}</Text>
               <TouchableOpacity style={skeleton.list} onPress={() => {this.deleteItem(key)}}>
                 <Icon
                   type="font-awesome"
                   name="trash"
-                  iconStyle={[main.btnIcon, main.btn, main.text ,main.btnText]}
+                  iconStyle={[theme.text, main.btnIcon, main.btn, main.text ,main.btnText]}
                 />
               </TouchableOpacity>
             </View>
-          )})}
+          )}
         </ScrollView>
       </View>
     );

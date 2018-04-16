@@ -9,7 +9,6 @@
 
     "topB": {
         "borderTopWidth": 1,
-        "borderColor": "rgba(0, 0, 0, 0.1)"
     },
 
     "bottomB": {
@@ -41,13 +40,11 @@
 
     "btnText": {
         "fontSize": 25,
-        "color": "rgba(0, 0, 0, .5)"
     },
 
     "btnIcon": {
         "fontSize": 16,
         "textAlignVertical": "center",
-        "color": "rgba(0, 0, 0, .5)"
     },
 
     "image": {

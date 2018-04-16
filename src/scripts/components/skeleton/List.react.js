@@ -22,13 +22,13 @@ class List extends Component {
         <View style={[theme.border, main.rightB, main.center, {paddingLeft: 20, paddingRight: 20, flex: 1}]}>
           <Image
             source={images[this.props.data.FROMSYMBOL]}
-            style={main.image}
+            style={[main.image]}
           />
-            <Text>
+            <Text style={theme.text}>
               {this.props.data.FROMSYMBOL}
             </Text>
         </View>
-        <Text style={[main.text, {flex: 3}]}>
+        <Text style={[theme.text, main.text, {flex: 3}]}>
           {this.props.data.PRICE}
           <Text style={{fontSize: 12}}>
             {this.props.data.TOSYMBOL}
@@ -42,10 +42,10 @@ class List extends Component {
         </TouchableOpacity>
           <View style={[theme.border, main.bottomB, skeleton.listInfo, main.rowContainer, main.verticalCenter, listInfo]}>
           <View style={[main.container, main.center]}>
-            <Text style={{fontSize: 12}}>
+            <Text style={[theme.text, {fontSize: 12}]}>
               Highest (24h)  {this.props.data.HIGH24HOUR}
             </Text>
-            <Text style={{fontSize: 12}}>
+            <Text style={[theme.text, {fontSize: 12}]}>
               Lowest (24h)  {this.props.data.LOW24HOUR}
             </Text>
           </View>

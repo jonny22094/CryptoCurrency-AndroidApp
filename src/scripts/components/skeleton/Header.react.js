@@ -14,22 +14,22 @@ class Header extends Component {
           <Icon
             type="material-icons"
             name="arrow-drop-down"
-            iconStyle={main.btnIcon}
+            iconStyle={[theme.text, main.btnIcon]}
             containerStyle={main.center}
           />
-            <Text style={main.btnIcon}>
+            <Text style={[theme.text, main.btnIcon]}>
               {this.props.listName}
             </Text>
           </TouchableOpacity>
           <View style={main.rowContainer}>
             <TouchableOpacity
               style={[main.rowContainer, main.btn]}
-              onPress={() => this.props.navigation.navigate("NewList", {listName: this.props.listName})}
+              onPress={() => this.props.navigation.navigate("NewList", {listName: this.props.listName, theme: theme})}
             >
               <Icon
                 type="material-icons"
                 name="edit"
-                iconStyle={[main.btnIcon, main.btnText]}
+                iconStyle={[theme.text, main.btnIcon, main.btnText]}
                 containerStyle={main.center}
               />
             </TouchableOpacity>

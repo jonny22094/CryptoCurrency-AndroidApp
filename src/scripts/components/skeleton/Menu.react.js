@@ -17,7 +17,7 @@ class Menu extends Component {
             style={[theme.border, main.bottomB]}
             onPress={() => {this.props.choseList(data); this.props.toogleMenu()}}>
               <View style={[main.btn, main.center, {height: 40}]}>
-                <Text style={main.btnIcon}>
+                <Text style={[theme.text, main.btnIcon]}>
                   {data}
                 </Text>
               </View>
@@ -26,7 +26,7 @@ class Menu extends Component {
         <TouchableOpacity
           style={[theme.border, main.bottomB]}
           onPress={() => {
-            this.props.navigation.navigate("NewList", {listName: ""});
+            this.props.navigation.navigate("NewList", {listName: "", theme: theme});
             this.props.toogleMenu()
           }
         }>
@@ -34,7 +34,7 @@ class Menu extends Component {
             <Icon
               type="entypo"
               name="plus"
-              iconStyle={[main.btnIcon, main.btnText]}
+              iconStyle={[theme.text, main.btnIcon, main.btnText]}
               containerStyle={main.center}/>
           </View>
         </TouchableOpacity>
