@@ -6,32 +6,8 @@ import images                                       from "../../utils/images.js"
 
 class List extends Component {
   state = {
-    name:  "",
     isOpen: false,
-    price: "Loading...",
-    change24hour: 0,
-    low24hour: 0,
-    high24hour: 0,
-    color: ""
-  }
-
-  async cryptoPrice() {
-    const data = await cc.priceFull(this.props.data.name, this.props.data.curr);
-
-    console.log(data);
-
-    this.setState({
-      name: data[this.props.data.name][this.props.data.curr].TOSYMBOL,
-      price: data[this.props.data.name][this.props.data.curr].PRICE,
-      low24hour: data[this.props.data.name][this.props.data.curr].LOW24HOUR,
-      high24hour: data[this.props.data.name][this.props.data.curr].HIGH24HOUR,
-      change24hour: data[this.props.data.name][this.props.data.curr].CHANGEPCT24HOUR.toFixed(2),
-      color: data[this.props.data.name][this.props.data.curr].CHANGEPCT24HOUR.toFixed(2) > 0 ? {color: "#299C2A"} : {color: "#DE4E4D"}
-    });
-  }
-
-  componentDidMount() {
-    this.cryptoPrice()
+    color: this.props.data.CHANGEPCT24HOUR.toFixed(2) > 0 ? {color: "#299C2A"} : {color: "#DE4E4D"}
   }
 
   render() {
@@ -45,32 +21,32 @@ class List extends Component {
         >
         <View style={[theme.border, main.rightB, main.center, {paddingLeft: 20, paddingRight: 20, flex: 1}]}>
           <Image
-            source={images[this.props.data.name]}
+            source={images[this.props.data.FROMSYMBOL]}
             style={main.image}
           />
             <Text>
-              {this.props.data.name}
+              {this.props.data.FROMSYMBOL}
             </Text>
         </View>
         <Text style={[main.text, {flex: 3}]}>
-          {this.state.price}
+          {this.props.data.PRICE}
           <Text style={{fontSize: 12}}>
-            {this.state.name}
+            {this.props.data.TOSYMBOL}
           </Text>
         </Text>
         <View style={[main.container, main.center, {flex: 2, flexDirection: "column"}]}>
           <Text style={this.state.color}>
-            {this.state.change24hour}%
+            {this.props.data.CHANGEPCT24HOUR.toFixed(2)}%
           </Text>
         </View>
         </TouchableOpacity>
           <View style={[theme.border, main.bottomB, skeleton.listInfo, main.rowContainer, main.verticalCenter, listInfo]}>
           <View style={[main.container, main.center]}>
             <Text style={{fontSize: 12}}>
-              Highest (24h)  {this.state.high24hour}
+              Highest (24h)  {this.props.data.HIGH24HOUR}
             </Text>
             <Text style={{fontSize: 12}}>
-              Lowest (24h)  {this.state.low24hour}
+              Lowest (24h)  {this.props.data.LOW24HOUR}
             </Text>
           </View>
         </View>
