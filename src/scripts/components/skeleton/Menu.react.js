@@ -3,31 +3,47 @@ import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { Icon }                                     from "react-native-elements";
 
 class Menu extends Component {
-    render() {
-        const menuClass = this.props.isMenuOpen ? [main.border, skStyles.menu] : [main.border, skStyles.menu, {display: "none"}];
+  render() {
+    const theme = this.props.navigation.state.params.theme;
+    const menuClass = this.props.isMenuOpen
+      ? [theme.container, theme.border, main.border, skeleton.menu]
+      : [theme.container, theme.border, main.border, skeleton.menu, {display: "none"}];
 
-        return (
-            <View style={menuClass}>
-                {this.props.lists.map((data, key) => { return (
-                    <TouchableOpacity key={key} style={main.bottomB} onPress={() => {this.props.choseList(data); this.props.toogleMenu();}}>
-                        <View style={[main.btn, main.center, {height: 40}]}>
-                            <Text style={main.btnIcon}>{data}</Text>
-                        </View>
-                    </TouchableOpacity>
-                )})}
-                <TouchableOpacity style={main.bottomB} onPress={() => {
-                    this.props.navigation.navigate("NewList", {listName: ""}); this.props.toogleMenu()}
-                }>
-                    <View style={[main.btn, main.center, {height: 40}]}>
-                        <Icon type="entypo" name="plus" iconStyle={[main.btnIcon, main.btnText]} containerStyle={main.center}/>
-                    </View>
-                </TouchableOpacity>
-            </View>
-        );
-    }
+    return (
+      <View style={menuClass}>
+        {this.props.lists.map((data, key) => (
+          <TouchableOpacity
+            key={key}
+            style={[theme.border, main.bottomB]}
+            onPress={() => {this.props.choseList(data); this.props.toogleMenu()}}>
+              <View style={[main.btn, main.center, {height: 40}]}>
+                <Text style={main.btnIcon}>
+                  {data}
+                </Text>
+              </View>
+          </TouchableOpacity>
+        ))}
+        <TouchableOpacity
+          style={[theme.border, main.bottomB]}
+          onPress={() => {
+            this.props.navigation.navigate("NewList", {listName: ""});
+            this.props.toogleMenu()
+          }
+        }>
+          <View style={[main.btn, main.center, {height: 40}]}>
+            <Icon
+              type="entypo"
+              name="plus"
+              iconStyle={[main.btnIcon, main.btnText]}
+              containerStyle={main.center}/>
+          </View>
+        </TouchableOpacity>
+        </View>
+    );
+  }
 }
 
 const main = StyleSheet.create(require("../../../styles/Arrangement"));
-const skStyles = StyleSheet.create(require("../../../styles/skeletonStyles"));
+const skeleton = StyleSheet.create(require("../../../styles/skeletonStyles"));
 
 export default Menu;

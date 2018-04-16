@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-export const colors = StyleSheet.create({
+const theme = StyleSheet.create({
     container: {
         backgroundColor: "#fff"
     },
@@ -17,3 +17,5 @@ export const colors = StyleSheet.create({
         color: "rgba(0, 0, 0, .5)"
     }
 });
+
+export default theme;

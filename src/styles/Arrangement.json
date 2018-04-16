@@ -1,12 +1,10 @@
 {
     "container": {
         "flex": 1,
-        "backgroundColor": "#fff"
     },
 
     "border": {
         "borderWidth": 1,
-        "borderColor": "rgba(0, 0, 0, 0.1)"
     },
 
     "topB": {
@@ -16,12 +14,10 @@
 
     "bottomB": {
         "borderBottomWidth": 1,
-        "borderColor": "rgba(0, 0, 0, 0.05)"
     },
 
     "rightB": {
         "borderRightWidth": 1,
-        "borderColor": "rgba(0, 0, 0, 0.1)"
     },
 
     "center": {
