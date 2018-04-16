@@ -28,6 +28,6 @@ class Settings extends Component {
 }
 
 const main = StyleSheet.create(require("../../styles/Arrangement"));
-const skStyles = StyleSheet.create(require("../../styles/skeletonStyles"));
+const skeleton = StyleSheet.create(require("../../styles/skeletonStyles"));
 
 export default Settings;

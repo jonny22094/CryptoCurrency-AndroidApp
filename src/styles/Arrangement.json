@@ -1,27 +1,22 @@
 {
     "container": {
         "flex": 1,
-        "backgroundColor": "#fff"
     },
 
     "border": {
         "borderWidth": 1,
-        "borderColor": "rgba(0, 0, 0, 0.1)"
     },
 
     "topB": {
         "borderTopWidth": 1,
-        "borderColor": "rgba(0, 0, 0, 0.1)"
     },
 
     "bottomB": {
         "borderBottomWidth": 1,
-        "borderColor": "rgba(0, 0, 0, 0.05)"
     },
 
     "rightB": {
         "borderRightWidth": 1,
-        "borderColor": "rgba(0, 0, 0, 0.1)"
     },
 
     "center": {
@@ -45,13 +40,11 @@
 
     "btnText": {
         "fontSize": 25,
-        "color": "rgba(0, 0, 0, .5)"
     },
 
     "btnIcon": {
         "fontSize": 16,
         "textAlignVertical": "center",
-        "color": "rgba(0, 0, 0, .5)"
     },
 
     "image": {
