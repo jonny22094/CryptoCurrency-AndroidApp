@@ -43,8 +43,8 @@ class HomeScreen extends Component {
 
   componentDidMount() {
     this.timerID = setInterval(
-    () => this.loadData(),
-    1000
+      () => this.loadData(),
+      1000
     );
   }
 

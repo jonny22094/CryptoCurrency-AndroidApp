@@ -6,13 +6,15 @@ import images                                       from "../../utils/images.js"
 
 class List extends Component {
   state = {
-    isOpen: false,
-    color: this.props.data.CHANGEPCT24HOUR.toFixed(2) > 0 ? {color: "#299C2A"} : {color: "#DE4E4D"}
+    isOpen: false
   }
 
   render() {
     const theme = this.props.theme;
     const listInfo = this.state.isOpen ? {display: "flex"} : {display: "none"};
+    const color = this.props.data.CHANGEPCT24HOUR.toFixed(2) > 0
+                    ? {color: "#299C2A"}
+                    : {color: "#DE4E4D"};
 
     return (
       <View>
@@ -35,7 +37,7 @@ class List extends Component {
           </Text>
         </Text>
         <View style={[main.container, main.center, {flex: 2, flexDirection: "column"}]}>
-          <Text style={this.state.color}>
+          <Text style={color}>
             {this.props.data.CHANGEPCT24HOUR.toFixed(2)}%
           </Text>
         </View>
