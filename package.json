@@ -1,11 +1,13 @@
 {
-  "name": "CryptoCurrencies_AndroidApp",
+  "name": "CryptoCurrenciesApp",
   "version": "0.3.0",
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "android": "node node_modules/react-native/local-cli/cli.js run-android",
-    "build": "cd android && ./gradlew assembleRelease && cd .."
+    "ios": "node node_modules/react-native/local-cli/cli.js run-ios",
+    "build-android": "cd android && ./gradlew assembleRelease && cd ..",
+    "clear": "rm -rf node_modules && npm i"
   },
   "dependencies": {
     "cryptocompare": "^0.4.0",
